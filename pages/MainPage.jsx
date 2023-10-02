@@ -58,7 +58,7 @@ export default function MainPage() {
                 if (statusPermission.granted) {
                     console.log("if granted");
 
-                    Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High }).then((location) => {
+                    Location.getCurrentPositionAsync().then((location) => {
                         console.log(location.coords);
                         const { latitude, longitude } = location.coords;
                         setCoordinates({ latitude, longitude });
@@ -113,7 +113,7 @@ export default function MainPage() {
                             <Text style={[{ fontSize: 55, fontWeight: 500 }, currentWeather?.IsDayTime ? styles.textDay : styles.textNight]}>{currentWeather ? Math.round(parseFloat(currentWeather?.Temperature?.Metric?.Value)) : ""}°</Text>
                             <Text style={[{ fontSize: 55, fontWeight: 500 }, currentWeather?.IsDayTime ? styles.textDay : styles.textNight]}>{currentWeather?.Temperature?.Metric?.Unit}</Text>
                         </View>
-                        <Text style={[{ fontSize: 25, fontWeight: 500 }, currentWeather?.IsDayTime ? styles.textDay : styles.textNight]}>{currentWeather?.WeatherText}</Text>
+                        <Text style={[{ fontSize: 25, fontWeight: 500, maxWidth: 250 }, currentWeather?.IsDayTime ? styles.textDay : styles.textNight]}>{currentWeather?.WeatherText}</Text>
                     </View>
 
                     <View style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
